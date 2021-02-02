@@ -1,0 +1,57 @@
+<div class="logo">
+    <a href="https://www.creative-tim.com" class="simple-text">
+        <div class="logo-img">
+            <img src="/assets/img/angular2-logo-red.png"/>
+        </div>
+        Creative Tim
+    </a>
+</div>
+<div class="sidebar-wrapper">
+  <form class="needs-validation" novalidate [formGroup]="form" class="nav-item">
+  <ul class="nav">
+
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+              <div class="form-row">
+                <li class="nav item">
+                <div class="nav-link">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nome"
+                    placeholder="Nome"
+                    formControlName="nome"
+                    [ngClass]="{ 'is-invalid': submitted && hasError('nome')}"
+                    />
+                  <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']" >
+                    Por favor informe um nome para o curso.
+                  </div>
+                    <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['minlength']" >
+                      Nome precisa ter no mínimo {{ hasError('nome')['minlength'].requiredLength }} caracteres.
+                    </div>
+                      <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['maxlength']" >
+                        Nome precisa ter no máximo {{ hasError('nome')['maxlength'].requiredLength }} caracteres.
+                      </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="idade"
+                          placeholder="Idade"
+                          formControlName="idade"
+                          [ngClass]="{ 'is-invalid': submitted && hasError('nome')}"
+                          />
+                </div>
+              </div>
+              <div style="margin-top: 10px">
+
+              </div>
+
+              <a class="nav-link" [routerLink]="[menuItem.path]">
+
+
+                <button type="sumit" class="btn btn-primary" style="margin-left: 40px" (click)="onSubmit()">Buscar</button>
+              </a>
+
+        </li>
+    </ul>
+  </form>
+</div>
