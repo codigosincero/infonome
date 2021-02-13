@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { Subscription } from 'rxjs';
+import {DadosclienteService} from "../dashservice.service"
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +10,12 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dashService: DadosclienteService) { }
+
+qtdDecada : string;
+qtdsubscription: Subscription;
+
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -67,6 +74,14 @@ export class DashboardComponent implements OnInit {
   };
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+
+      console.log("init");
+      this.qtdsubscription = this.dashService.dashdatasob$.subscribe(
+        dados => {
+          console.log(dados)
+          this.qtdDecada = dados.nome
+        }
+      );
 
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],

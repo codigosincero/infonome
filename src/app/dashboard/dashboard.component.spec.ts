@@ -13,7 +13,7 @@ describe('DashboardComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
+beforeEach(() => {
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -15,6 +15,8 @@ export class AdminLayoutComponent implements OnInit {
 
  constructor( ) {}
 
+
+
   ngOnInit() {
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
